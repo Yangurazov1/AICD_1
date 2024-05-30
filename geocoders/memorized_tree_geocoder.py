@@ -16,11 +16,14 @@ class MemorizedTreeGeocoder(Geocoder):
             return
         self.slov.dict[node.id]=address
         for areas in node.areas:
-            self.tr_tree(areas, address+', '+areas.name)
+            self.tr_tree(areas, address+', '+areas.name) # Рекурсивно вызывается tr_tree для каждой области, добавляя к адресу имя области
+
 
     def _apply_geocoding(self, area_id: str) -> str:
-       if area_id in self.slov.dict:
+       if area_id in self.slov.dict:  # Проверяет, есть ли area_id в словаре self.slov.dict
+
             return self.slov.dict[area_id]
         else:
-            return "бабаббабабаба"
+            return "бабаббабабаба" # Возвращает заглушку "бабаббабабаба", если area_id не найден
+
         raise NotImplementedError()
