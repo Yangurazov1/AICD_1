@@ -12,8 +12,10 @@ class SimpleQueryGeocoder(Geocoder):
 
         while node := API.get_area(node.parent_id):
 
-            adress = node.name + ' ' + adress
+            adress = node.name + ' ' + adress  # Добавляет имя родительского узла к уже сформированному адресу
+
             
-            if node.parent_id is None:
+            if node.parent_id is None: # Проверяет, является ли родительский узел корневым
+
                 break
         raise NotImplementedError()
